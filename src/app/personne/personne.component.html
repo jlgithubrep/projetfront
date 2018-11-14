@@ -1,3 +1,53 @@
 <p>
   personne works!
 </p>
+<p>double clic pour modifier une personne</p>
+<div class="row">
+    <form #personneForm="ngForm">
+
+        <div class="form-group">
+          <label for="nom">Nom: </label>
+          <input type="text" class="form-control" id="nom" name="nom" placeholder="Entrez un nom" [(ngModel)]="nom"
+            required>
+          <label for="prenom">Prenom: </label>
+          <input type="text" class="form-control" id="prenom" name="prenom" placeholder="Entrez un prenom" [(ngModel)]="prenom"
+            required>
+    
+        </div>
+    
+        <button (click)="ajouterPersonne()" type="submit" class="btn btn-primary" [disabled]="!personneForm.valid">Ajouter</button>
+      </form>
+</div>
+
+<div class="row">
+ 
+  
+  <div class="card" style="width: 18rem;" *ngFor="let p of personnes ; let i = index">
+    <div class="card-body bg-light">
+      <h6 class="card-subtitle mb-2 text-muted">{{p.genre}}</h6>
+      <p class="card-text" (dblclick)="afficheModifComm(p.id)">{{p.id}} {{p.nom}}, {{p.prenom}}</p>
+
+
+      <!-- zone de modif, ne s'afficher que si aff==true et si idAffMod est egal au i courant  -->
+      <form #modifComm="ngForm" *ngIf="aff && idAffMod==p.id">
+        <div class="form-group">
+
+          <label for="nomModif">Modif Nom: </label>
+          <input type="text" class="form-control" id="nomModif" name="nomModif" placeholder="Entrez modif nom"
+            [(ngModel)]="nomModif" required>
+
+          <label for="prenomModif">Modif Prenom: </label>
+          <input type="text" class="form-control" id="prenomModif" name="prenomModif" placeholder="Entrez modif prenom"
+            [(ngModel)]="prenomModif" required>
+
+        </div>
+        <button (click)="confirmModif(p.id)" type="submit" class="btn btn-warning" [disabled]="!modifComm.valid">Modifier</button>
+      </form>
+
+
+
+
+      <button (click)="supprimerPersonne(p.id)" type="submit" class="btn btn-danger">Supprimer</button>
+    </div>
+  </div>
+</div>
