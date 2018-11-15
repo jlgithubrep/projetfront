@@ -74,7 +74,11 @@ crud personne
         
     delete
         admin peut sur la liste
-		
+
+session
+    component menu
+    http://www.lsis.org/elmouelhia/courses/coursAngularPart11.pdf
+
 
 crud article
     rien

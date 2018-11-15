@@ -1,0 +1,165 @@
+﻿utilisation d'angular avec typscript car on a des classes et decorateur avec typescript
+pas obliger d'utiliser des services, mais c'est pour structurer
+service : singleton (1 instance), utiliser pour lien avec bdd/données
+
+-----
+https://angular.io/guide/setup
+
+quickstart seed download
+
+cd quickstart
+npm install
+npm start
+
+--------
+
+creation d'un projet angular:
+
+install global pour utiliser le cli (command line interface) de angular
+npm install -g @angular/cli
+(dans AppData/Roaming/npm/node_modules)
+
+creation du projet dans un dossier vide:
+ng new nom-projet
+cd nom-projet
+ng serve --open
+
+fichiers importants:
+index.html
+main.ts
+app.module.ts
+app.component.ts
+app.component.html
+
+rajouter un nouveau composant:
+ng generate component my-component
+ng g c my-component
+
+---
+inculre bootstrap au projet, (dans le dossier du projet):
+npm install bootstrap --save
+dans le projet dans le fichier .angular-cli.json (.angular.json pour angular6)
+dans la partie "options" puis "styles", rajouter apres "styles.css" le chemin vers le css de bootstrap dans "../node_modules/bootstrap/dist/css/bootstrap.css"
+(../ car le dossier racine roots de apps est le dossier src)
+pour angular6:
+"./node modules/bootstrap/dist/css/bootstrap.css"
+
+-------
+
+"./node_modules/bootstrap/dist/js/bootstrap.min.js"
+npm install popper.js --save
+"./node_modules/popper.js/dist/popper.min.js"
+
+---
+supprimer le cache:
+npm cache clear --force
+--
+route:
+dans le dossier app:
+creation de routes.ts // app.routes.ts : 
+	import { RouterModule, Routes } from '@angular/router';
+	import ...des components
+tab des chemins vers chaque components:
+	export const routes: Routes = [
+	    { path: "mon", component: MonCompComponent }];
+
+dans app.module.ts:
+	import { RouterModule, Routes } from '@angular/router';
+	import { routes } from './routes';
+	dans @NgModule, imports:
+	RouterModule.forRoot(routes)
+
+lien clickable vers ce component dans app.component.html  et le webcomponent:
+	<a routerLink = "/mon" routerLinkActive="active">Mon component</a>
+	<routeur-outlet></router-outlet>
+
+
+
+
+-----
+
+un service est une classe qui peut avoir une instance d'un seul objet
+---
+service (en singleton) fait l'intermediaire entre angular et l'exterieur (web services etc...)
+on déclare les services dans la partie providers de l'annotation NgModule de app.module.ts
+on declare le component principale dans bootstrap (pas le framework css)
+-----
+
+création d'un service
+ng g service nomDuService
+placer dans un dossier services
+déclaration dans app.module.ts, dans le tableau providers
+---
+
+stockage fichier json
+creation fichier json dans le dossier assets du projet
+
+lancement server http json
+
+install global:
+npm i -g json-server
+
+se placer dans le dossier contenant le .json crée:
+cd src/assets
+
+lancement du server sur le port 5555
+json-server -p 5555 commentaires.json
+
+depuis angular5,
+HttpClientModule
+import { HttpClientModule } from "@angular/common/http";
+dans app.module.ts
+
+faire injection de dépendance dans le constructeur du service avec:
+  constructor(private http:HttpClient) { }
+
+
+modification du service commentaire.service.ts : on travaille avec le classe Http qui prend en parametre l'adresse du server json
+modification du component commentaire.components.ts pour pouvoir recup le nouveau type de retour (on appel les methodes du services)
+
+les noms d'attributs dans commentaires.json doit etre le meme que les getters dans la classe commentaire
+
+subscribe dans le component pas dans le service (meme si c'est faisable)
+
+il faut mettre un id dans chaque collection dans le fichier json, meme si on en donne pas à l'ajout
+--
+inclure jquery au projet
+dans le dossier du projet:
+npm install jquery --save
+
+dans le projet dans le fichier .angular-cli.json (.angular.json pour angular6)
+dans la partie "options" puis "scripts", rajouter le chemin vers le js de jquery dans 
+"../node_modules/jquery/dist/jquery.min.js"
+pour angular6:
+"./node_modules/jquery/dist/jquery.min.js"
+(relancer le server)
+
+quand on veut l'utiliser dans un ts, rajouter
+declare var $:any;
+entre les imports et l'annotation @component
+
+puis l'utilisation de jquery entre le component.html et le component.ts est comme avant
+en mettant les instructions jquery dans le ngOnInit() du .ts
+
+--
+dans le constructor d'un component genere, on fait de l'injection de dépendance (instanciation dynamique d'une classe sans la connaitre )
+
+-----
+
+<p id="{{id}}">hello</p>
+equivalent
+<p [id]="id">hello</p>
+
+----
+
+creation de pipe 
+ng g pipe nomdupipe
+
+definition de la fonctionalite du pipe dans la fonction transform dans nomdupipe.pipe.ts
+
+----
+formulaire
+dans app.module.ts
+import { FormsModule } from "@angular/forms";
+dans imports:FormsModule
+
