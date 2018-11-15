@@ -29,6 +29,8 @@ export class PersonneComponent implements OnInit {
   //modif
   nomModif: string;
   prenomModif: string;
+  mailModif :string;
+  mdpModif:string;
 
 
   aff: boolean = false;//pour cacher les zones de modification de commentaires
@@ -65,6 +67,8 @@ export class PersonneComponent implements OnInit {
     this.personneService.findById(i).subscribe(res => {
       this.nomModif = res.nom;
       this.prenomModif = res.prenom;
+      this.mailModif=res.mail;
+      this.mdpModif=res.mdp;
     });
 
 
@@ -79,7 +83,7 @@ export class PersonneComponent implements OnInit {
     //this.commentaires[i].contenu = this.commModif;
     //this.commentaires[i].date = new Date();
 
-    let p: Personne = { id: 1, abonne: 0, mail: "mail.test@gmail.com", mdp: "mdptest", nom: this.nomModif, prenom: this.prenomModif, type: "utilisateur" };
+    let p: Personne = { id: 1, abonne: 0, mail: this.mailModif, mdp: this.mdpModif, nom: this.nomModif, prenom: this.prenomModif, type: "utilisateur" };
 
     //modification par le service:
     this.personneService.updatePersonne(i, p).subscribe(res => {

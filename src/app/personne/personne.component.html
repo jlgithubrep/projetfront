@@ -48,12 +48,17 @@
         <div class="form-group">
 
           <label for="nomModif">Modif Nom: </label>
-          <input type="text" class="form-control" id="nomModif" name="nomModif" placeholder="Entrez modif nom"
-            [(ngModel)]="nomModif" required>
+          <input type="text" class="form-control" id="nomModif" name="nomModif" [(ngModel)]="nomModif" required>
 
           <label for="prenomModif">Modif Prenom: </label>
-          <input type="text" class="form-control" id="prenomModif" name="prenomModif" placeholder="Entrez modif prenom"
-            [(ngModel)]="prenomModif" required>
+          <input type="text" class="form-control" id="prenomModif" name="prenomModif" [(ngModel)]="prenomModif"
+            required>
+
+          <label for="mailModif">Modifier l'adresse Email: </label>
+          <input type="text" class="form-control" id="mailModif" name="mailModif" [(ngModel)]="mailModif" required>
+
+          <label for="mdpModif">Modifier le mot de passe: </label>
+          <input type="password" class="form-control" id="mdpModif" name="mdpModif" [(ngModel)]="mdpModif" required>
 
         </div>
         <button (click)="confirmModif(p.id)" type="submit" class="btn btn-warning" [disabled]="!modifComm.valid">Modifier</button>
