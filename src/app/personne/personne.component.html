@@ -2,40 +2,12 @@
   personne works!
 </p>
 <p>double clic pour modifier une personne</p>
-<div class="row">
-  <form #personneForm="ngForm">
-
-    <div class="form-group">
-      <label for="nom">Nom: </label>
-      <input type="text" class="form-control" id="nom" name="nom" placeholder="Entrez un nom" [(ngModel)]="nom"
-        required>
-      <label for="prenom">Prenom: </label>
-      <input type="text" class="form-control" id="prenom" name="prenom" placeholder="Entrez un prenom" [(ngModel)]="prenom"
-        required>
-      <label for="mail">Email: </label>
-      <input type="text" class="form-control" id="mail" name="mail" placeholder="Entrez un Email" [(ngModel)]="mail"
-        required>
-      <label for="mdp">Mot de passe: </label>
-      <input type="password" class="form-control" id="mdp" name="mdp" placeholder="Entrez un mot de passe" [(ngModel)]="mdp"
-        required>
-
-      <label for="newsletter">Abonnement à la newsletter</label>
-      <select name="selectNewsletter" [(ngModel)]="selectNewsletter" required>
-        <option selected [ngValue]="0">Non</option>
-        <option [ngValue]="1">Oui</option>
-      </select>
-
-    </div>
-
-    <button (click)="ajouterPersonne()" type="submit" class="btn btn-primary" [disabled]="!personneForm.valid">Ajouter</button>
-  </form>
-</div>
 
 <div class="row">
 
 
   <div class="card" style="width: 18rem;" *ngFor="let p of personnes ; let i = index">
-    <div class="card-body bg-light">
+    <div class="card-body bg-dark text-light">
       <h6 class="card-subtitle mb-2 text-muted">{{p.type}}</h6>
       <p class="card-text" (dblclick)="afficheModifComm(p.id)">{{p.id}} Nom : {{p.nom}}, Prenom : {{p.prenom}}</p>
       <p class="card-text">Email : {{p.mail}}</p>

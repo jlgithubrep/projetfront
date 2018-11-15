@@ -42,8 +42,8 @@ export class PersonneService {
         return this.http.put(this.url + i, p);
     }
 
-    login(nom:string, password : string){
-        return this.http.get(this.url+ "search/findByNomAndMdp?nom="+nom+"&mdp="+password);
+    login(mail:string, password : string){
+        return this.http.get(this.url+ "search/findByMailAndMdp?mail="+mail+"&mdp="+password);
     }
 
 }

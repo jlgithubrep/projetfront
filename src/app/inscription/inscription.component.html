@@ -1,0 +1,40 @@
+<p>
+  inscription works!
+</p>
+<div class="row">
+  <form #personneForm="ngForm">
+
+    <div class="form-group">
+      <label for="nom">Nom: </label>
+      <input type="text" class="form-control" id="nom" name="nom" placeholder="Entrez un nom" [(ngModel)]="nom"
+        required>
+      <label for="prenom">Prenom: </label>
+      <input type="text" class="form-control" id="prenom" name="prenom" placeholder="Entrez un prenom" [(ngModel)]="prenom"
+        required>
+      <label for="mail">Email: </label>
+      <input type="text" class="form-control" id="mail" name="mail" placeholder="Entrez un Email" [(ngModel)]="mail"
+        required pattern='^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$'>
+      <label for="mdp">Mot de passe: </label>
+      <input type="password" class="form-control" id="mdp" name="mdp" placeholder="Entrez un mot de passe" [(ngModel)]="mdp"
+        required>
+      <label for="mdpConfirm">Mot de passe: </label>
+      <input type="password" class="form-control" id="mdpConfirm" name="mdpConfirm" placeholder="Entrez à nouveau le mot de passe"
+        [(ngModel)]="mdpConfirm" required>
+
+      <label for="newsletter">Abonnement à la newsletter</label>
+      <select name="selectNewsletter" [(ngModel)]="selectNewsletter" required>
+        <option selected [ngValue]="0">Non</option>
+        <option [ngValue]="1">Oui</option>
+      </select>
+
+      <pre>{{personneForm.value | json}}</pre>
+    </div>
+
+    <button (click)="ajouterPersonne()" type="submit" class="btn btn-primary" [disabled]="!personneForm.valid">Ajouter</button>
+  </form>
+
+  <div class="bg-warning" *ngIf="passwordnotmatching == true">
+    Mot de passe ne correspond pas
+  </div>
+
+</div>

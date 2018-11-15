@@ -59,25 +59,30 @@ creer les controller avec pathname
 ------------
 
 crud personne
-	c
+    create
+	    faire inscription avec validators
+    read
+        liste des personnes pour l'admin
+        page login pour user et journaliste en cours
+    update
+        page personne admin
+	        pouvoir passer un utilisateur en journaliste
+	        pas de modif de compte pour l'admin
+        page usergestion
+	        modif de compte
+	        abonnement newsletter
+        
+    delete
+        admin peut sur la liste
 		
 
-page login
+crud article
+    rien
+
+
 
 
 
 
 sessions
 securité
-
-
-page personne admin
-	pouvoir passer un utilisateur en journaliste
-	pas de modif de compte
-
-page usergestion
-	modif de compte
-	abonnement newsletter
-
-page d'article
-

@@ -18,12 +18,6 @@ export class PersonneComponent implements OnInit {
   personnes: Personne[] = new Array;
 
 
-  //ajout/inscription user
-  nom: string;
-  prenom: string;
-  mail: string;
-  mdp: string;
-  selectNewsletter: number;
 
 
   //modif
@@ -36,21 +30,7 @@ export class PersonneComponent implements OnInit {
   aff: boolean = false;//pour cacher les zones de modification de commentaires
   idAffMod: number;//pour recupere l'id du commentaire pour le quel on veut afficher la zone de modif
 
-  //ajout/inscription user
-  ajouterPersonne() {
-    let p: Personne = { id: null, abonne: this.selectNewsletter, mail: this.mail, mdp: this.mdp, nom: this.nom, prenom: this.prenom, type: "utilisateur" };
 
-    this.personneService.addPersonne(p).subscribe(res => {
-      this.nom = "";
-      this.prenom = "";
-      this.mail = "";
-      this.mdp = "";
-      //pour avoir l'affichage à jour
-      this.personneService.getAllPersonne().subscribe(res => {
-        this.personnes = res['_embedded'].personnes;
-      });
-    });
-  }
 
 
   //admin

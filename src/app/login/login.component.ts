@@ -13,14 +13,14 @@ export class LoginComponent implements OnInit {
     this.erreur = false;
   }
 
-  nom: string;
+  mail: string;
   mdp: string;
 
   p: Personne;
   erreur: boolean;
 
   login() {
-    this.personneService.login(this.nom, this.mdp).subscribe(res => {
+    this.personneService.login(this.mail, this.mdp).subscribe(res => {
 
       this.p = <Personne>res;
       console.log(this.p.nom);
