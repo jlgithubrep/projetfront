@@ -23,14 +23,14 @@ export class PersonneComponent implements OnInit {
   prenom: string;
   mail: string;
   mdp: string;
-  selectNewsletter : number;
+  selectNewsletter: number;
 
 
   //modif
   nomModif: string;
   prenomModif: string;
-  mailModif :string;
-  mdpModif:string;
+  mailModif: string;
+  mdpModif: string;
 
 
   aff: boolean = false;//pour cacher les zones de modification de commentaires
@@ -45,6 +45,10 @@ export class PersonneComponent implements OnInit {
       this.prenom = "";
       this.mail = "";
       this.mdp = "";
+      //pour avoir l'affichage à jour
+      this.personneService.getAllPersonne().subscribe(res => {
+        this.personnes = res['_embedded'].personnes;
+      });
     });
   }
 
@@ -67,8 +71,8 @@ export class PersonneComponent implements OnInit {
     this.personneService.findById(i).subscribe(res => {
       this.nomModif = res.nom;
       this.prenomModif = res.prenom;
-      this.mailModif=res.mail;
-      this.mdpModif=res.mdp;
+      this.mailModif = res.mail;
+      this.mdpModif = res.mdp;
     });
 
 
