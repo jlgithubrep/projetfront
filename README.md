@@ -27,3 +27,57 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
 
 ## notes
+
+let header = new Httpheader({
+	"Autorization":"Basic"+btoa("wick":"passwick");
+});
+
+http.post(url, , header)
+
+
+
+
+creation
+spring boot starter
+	jpa
+	mysql
+	web
+	devtools
+
+----
+rajouter dependence
+	web
+	devtools
+
+enlever les annotations @repositoryRestResource dans les reposirtory
+
+creer les controller avec pathname
+------
+
+@Jsonignore dans le model
+
+------------
+
+crud personne
+	c
+		
+
+page login
+
+
+
+
+sessions
+securité
+
+
+page personne admin
+	pouvoir passer un utilisateur en journaliste
+	pas de modif de compte
+
+page usergestion
+	modif de compte
+	abonnement newsletter
+
+page d'article
+
