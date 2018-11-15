@@ -18,9 +18,12 @@ export class PersonneComponent implements OnInit {
   personnes: Personne[] = new Array;
 
 
-  //ajout
+  //ajout/inscription user
   nom: string;
   prenom: string;
+  mail: string;
+  mdp: string;
+  selectNewsletter : number;
 
 
   //modif
@@ -31,17 +34,20 @@ export class PersonneComponent implements OnInit {
   aff: boolean = false;//pour cacher les zones de modification de commentaires
   idAffMod: number;//pour recupere l'id du commentaire pour le quel on veut afficher la zone de modif
 
+  //ajout/inscription user
   ajouterPersonne() {
-    let p: Personne = { id: 25, abonne: 0, mail: "mail.test@gmail.com", mdp: "mdptest", nom: this.nom, prenom: this.prenom, type: "administrateur" };
+    let p: Personne = { id: null, abonne: this.selectNewsletter, mail: this.mail, mdp: this.mdp, nom: this.nom, prenom: this.prenom, type: "utilisateur" };
 
     this.personneService.addPersonne(p).subscribe(res => {
       this.nom = "";
       this.prenom = "";
+      this.mail = "";
+      this.mdp = "";
     });
   }
 
 
-
+  //admin
   supprimerPersonne(id: number) {
     console.log(id);
     //console.log(this.personnes[2]);
@@ -52,6 +58,7 @@ export class PersonneComponent implements OnInit {
     });
   }
 
+  //admin, à dupliquer pour user seul
   afficheModifComm(i: number) {
 
     //pour afficher les infos deja connues dans les zones de modifs
@@ -65,6 +72,7 @@ export class PersonneComponent implements OnInit {
     this.idAffMod = i;//idAffMod est testé dans le ngIf du form de modif
   }
 
+  //admin, à dupliquer pour user seul
   confirmModif(i: number) {
     console.log("confirm mod: " + i);
 
