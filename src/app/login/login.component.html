@@ -1,3 +1,22 @@
 <p>
   login works!
 </p>
+<div class="row">
+  <form #loginForm="ngForm">
+
+    <div class="form-group">
+      <label for="nom">Nom: </label>
+      <input type="text" class="form-control" id="nom" name="nom" placeholder="Entrez un nom" [(ngModel)]="nom"
+        required>
+      <label for="mdp">Mot de passe: </label>
+      <input type="password" class="form-control" id="mdp" name="mdp" placeholder="Entrez un mot de passe" [(ngModel)]="mdp"
+        required>
+    </div>
+    <button (click)="login()" type="submit" class="btn btn-primary" [disabled]="!loginForm.valid">Se connecter</button>
+  </form>
+
+<div class="warning" *ngIf="erreur == true">
+  Informations de connexion Incorrectes!
+</div>
+
+</div>
