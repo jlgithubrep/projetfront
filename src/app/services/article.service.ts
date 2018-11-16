@@ -17,11 +17,11 @@ export class ArticleService {
   password: string = "";
 
   getAllArticles() {
-    let user = this.username + ":" + this.password;
-    const headers = new HttpHeaders().set("Authorization", "Basic " + btoa(user));
-    headers.append('Access-Control-Allow-Origin', '*');
-    headers.append('Access-Control-Allow-Methods', 'GET, PUT, POST, DELETE, HEAD, OPTIONS');
-    return this.http.get<Array<Article>>(this.url + "articles/", { headers: headers });
+    // let user = this.username + ":" + this.password;
+    // const headers = new HttpHeaders().set("Authorization", "Basic " + btoa(user));
+    // headers.append('Access-Control-Allow-Origin', '*');
+    // headers.append('Access-Control-Allow-Methods', 'GET, PUT, POST, DELETE, HEAD, OPTIONS');
+    return this.http.get<Array<Article>>(this.url + "articles/");
   }
 
   findById(id: number) {

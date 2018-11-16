@@ -16,17 +16,19 @@ export class PersonneService {
 
     //headers: HttpHeaders = new HttpHeaders();
 
+    //il faut passer les variables en sessions de locastorage ici
     username: string = "user";
     password: string = "";
 
 
 
     getAllPersonne() {
-        let user = this.username + ":" + this.password;
-        const headers = new HttpHeaders().set("Authorization", "Basic " + btoa(user));
-        headers.append('Access-Control-Allow-Origin', '*');
-        headers.append('Access-Control-Allow-Methods', 'GET, PUT, POST, DELETE, HEAD, OPTIONS');
-        return this.http.get<Array<Personne>>(this.url + "personnes/", { headers: headers });
+        // let user = this.username + ":" + this.password;
+        // const headers = new HttpHeaders().set("Authorization", "Basic " + btoa(user));
+        // headers.append('Access-Control-Allow-Origin', '*');
+        // headers.append('Access-Control-Allow-Methods', 'GET, PUT, POST, DELETE, HEAD, OPTIONS');
+        //return this.http.get<Array<Personne>>(this.url + "personnes/", { headers: headers });
+        return this.http.get<Array<Personne>>(this.url + "personnes/");
     }
 
     findById(id: number) {
@@ -36,8 +38,8 @@ export class PersonneService {
     addPersonne(p: Personne) {
         let user = this.username + ":" + this.password;
         const headers = new HttpHeaders().set("Authorization", "Basic " + btoa(user));
-        headers.append('Access-Control-Allow-Origin', '*');
-        headers.append('Access-Control-Allow-Methods', 'GET, PUT, POST, DELETE, HEAD, OPTIONS');
+        // headers.append('Access-Control-Allow-Origin', '*');
+        // headers.append('Access-Control-Allow-Methods', 'GET, PUT, POST, DELETE, HEAD, OPTIONS');
         return this.http.post(this.url + "personne/", p, { headers: headers });
     }
 

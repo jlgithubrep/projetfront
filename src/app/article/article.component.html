@@ -4,13 +4,15 @@
 <div class="row">
 
   <div *ngFor="let a of articles ; let i = index">
-    {{a.titre}}
-    {{a.auteurArticle}}
-    {{a.tag}}
-    {{a.datePublication | date}}
-    {{a.nbVue}}
-    {{a.contenuArticle}}
-    <br>
+    <p>
+      {{a.titre}}
+      {{a.auteurArticle}}
+      {{a.tag}}
+      {{a.datePublication | date}}
+      {{a.nbVue}}
+      {{a.contenuArticle}}
+
+    </p>
   </div>
 
 

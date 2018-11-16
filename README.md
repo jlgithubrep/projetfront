@@ -97,8 +97,12 @@ crud commentaire
     rien
 
 sessions
+    il faut renvoyer les infos de connextions vers le service pour l'acces au url
+
+
 securité
 
 enlever la possibilite de suppression dans la liste des personne sur l'admin quand l'admin est co
+
 
 
