@@ -11,7 +11,8 @@ export class PersonneComponent implements OnInit {
 
   constructor(private personneService: PersonneService) {
     this.personneService.getAllPersonne().subscribe(res => {
-      this.personnes = res['_embedded'].personnes;
+      //this.personnes = res['_embedded'].personnes;
+      this.personnes =res;
     });
   }
 
@@ -39,7 +40,7 @@ export class PersonneComponent implements OnInit {
     //console.log(this.personnes[2]);
     this.personneService.supprPersonne(id).subscribe(res => {
       this.personneService.getAllPersonne().subscribe(res => {
-        this.personnes = res['_embedded'].personnes;
+        this.personnes = res;
       });
     });
   }
@@ -67,13 +68,13 @@ export class PersonneComponent implements OnInit {
     //this.commentaires[i].contenu = this.commModif;
     //this.commentaires[i].date = new Date();
 
-    let p: Personne = { id: 1, abonne: 0, mail: this.mailModif, mdp: this.mdpModif, nom: this.nomModif, prenom: this.prenomModif, type: "utilisateur" };
+    let p: Personne = { id: i, abonne: 0, mail: this.mailModif, mdp: this.mdpModif, nom: this.nomModif, prenom: this.prenomModif, type: "utilisateur" };
 
     //modification par le service:
     this.personneService.updatePersonne(i, p).subscribe(res => {
       //pour avoir l'affichage à jour
       this.personneService.getAllPersonne().subscribe(res => {
-        this.personnes = res['_embedded'].personnes;
+        this.personnes = res;
       });
 
     });

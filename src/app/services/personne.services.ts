@@ -8,42 +8,61 @@ import { Personne } from '../interfaces/Personne';
 })
 export class PersonneService {
 
-    url: string = "http://localhost:8080/personnes/";
+    url: string = "http://localhost:8080/";
 
     constructor(private http: HttpClient) { }
 
     personnes: Personne[] = new Array;
 
+    //headers: HttpHeaders = new HttpHeaders();
 
-    headers: HttpHeaders = new HttpHeaders();
+    username: string = "user";
+    password: string = "";
+
 
 
     getAllPersonne() {
-        return this.http.get<Array<Personne>>(this.url);
+        let user = this.username + ":" + this.password;
+        const headers = new HttpHeaders().set("Authorization", "Basic " + btoa(user));
+        headers.append('Access-Control-Allow-Origin', '*');
+        headers.append('Access-Control-Allow-Methods', 'GET, PUT, POST, DELETE, HEAD, OPTIONS');
+        return this.http.get<Array<Personne>>(this.url + "personnes/", { headers: headers });
     }
 
     findById(id: number) {
-        return this.http.get<Personne>(this.url + id);
+        return this.http.get<Personne>(this.url + "personnes/" + id);
     }
 
     addPersonne(p: Personne) {
-        this.headers.append('Access-Control-Allow-Origin', '*');
-        this.headers.append('Access-Control-Allow-Methods', 'GET, PUT, POST, DELETE, HEAD, OPTIONS');
-        return this.http.post(this.url, p, { headers: this.headers });
+        let user = this.username + ":" + this.password;
+        const headers = new HttpHeaders().set("Authorization", "Basic " + btoa(user));
+        headers.append('Access-Control-Allow-Origin', '*');
+        headers.append('Access-Control-Allow-Methods', 'GET, PUT, POST, DELETE, HEAD, OPTIONS');
+        return this.http.post(this.url + "personne/", p, { headers: headers });
     }
 
     supprPersonne(i: number) {
-        this.headers.append('Access-Control-Allow-Origin', '*');
-        this.headers.append('Access-Control-Allow-Methods', 'GET, PUT, POST, DELETE, HEAD, OPTIONS');
-        return this.http.delete(this.url + i, { headers: this.headers });
+        let user = this.username + ":" + this.password;
+        const headers = new HttpHeaders().set("Authorization", "Basic " + btoa(user));
+        headers.append('Access-Control-Allow-Origin', '*');
+        headers.append('Access-Control-Allow-Methods', 'GET, PUT, POST, DELETE, HEAD, OPTIONS');
+        return this.http.delete(this.url + "personneDelete/" + i, { headers: headers });
     }
 
     updatePersonne(i: number, p: Personne) {
-        return this.http.put(this.url + i, p);
+        let user = this.username + ":" + this.password;
+        const headers = new HttpHeaders().set("Authorization", "Basic " + btoa(user));
+        headers.append('Access-Control-Allow-Origin', '*');
+        headers.append('Access-Control-Allow-Methods', 'GET, PUT, POST, DELETE, HEAD, OPTIONS');
+        return this.http.put(this.url + "personneUpdate/" + i, p, { headers: headers });
     }
 
-    login(mail:string, password : string){
-        return this.http.get(this.url+ "search/findByMailAndMdp?mail="+mail+"&mdp="+password);
+    login(mail: string, password: string) {
+        let user = this.username + ":" + this.password;
+        const headers = new HttpHeaders().set("Authorization", "Basic " + btoa(user));
+        headers.append('Access-Control-Allow-Origin', '*');
+        headers.append('Access-Control-Allow-Methods', 'GET, PUT, POST, DELETE, HEAD, OPTIONS');
+        return this.http.get(this.url + "personneLogin?mail=" + mail + "&mdp=" + password, { headers: headers });
     }
 
 }

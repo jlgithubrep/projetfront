@@ -81,7 +81,16 @@ session
 
 
 crud article
-    rien
+    create
+        seul admin/journaliste peut avoir le lien de creation
+        rien
+    read
+        affichage general
+        faire: un journaliste co ne peut afficher la liste des article qu'il a redigé lui meme, pas ceux des autres journalistes
+    update
+        rien
+    delete
+        rien
 
 
 crud commentaire
@@ -91,3 +100,5 @@ sessions
 securité
 
 enlever la possibilite de suppression dans la liste des personne sur l'admin quand l'admin est co
+
+

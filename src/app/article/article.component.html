@@ -5,8 +5,13 @@
 
   <div *ngFor="let a of articles ; let i = index">
     {{a.titre}}
+    {{a.auteurArticle}}
+    {{a.tag}}
+    {{a.datePublication | date}}
+    {{a.nbVue}}
+    {{a.contenuArticle}}
+    <br>
   </div>
-
 
 
 </div>
