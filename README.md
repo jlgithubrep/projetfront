@@ -84,9 +84,10 @@ crud article
     rien
 
 
-
-
-
+crud commentaire
+    rien
 
 sessions
 securité
+
+enlever la possibilite de suppression dans la liste des personne sur l'admin quand l'admin est co

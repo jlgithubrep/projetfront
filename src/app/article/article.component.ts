@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ArticleService } from '../services/article.service';
+import { Article } from '../interfaces/Article';
 
 @Component({
   selector: 'app-article',
@@ -7,8 +9,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ArticleComponent implements OnInit {
 
-  constructor() { }
+  constructor(private articleService : ArticleService) {
+    this.articleService.getAllArticles().subscribe(res=>{
+      this.articles = res['_embedded'].articles;
+    });
+  }
 
+  articles : Article[] = new Array;
   ngOnInit() {
   }
 
