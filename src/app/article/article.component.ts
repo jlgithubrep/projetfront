@@ -11,7 +11,7 @@ export class ArticleComponent implements OnInit {
 
   constructor(private articleService : ArticleService) {
     this.articleService.getAllArticles().subscribe(res=>{
-      this.articles = res['_embedded'].articles;
+      this.articles = res;
     });
   }
 
