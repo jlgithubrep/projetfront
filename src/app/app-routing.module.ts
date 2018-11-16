@@ -8,7 +8,8 @@ import { LoginComponent } from './login/login.component';
 import { InscriptionComponent } from './inscription/inscription.component';
 
 const routes: Routes = [
-  { path: "", component: HomeComponent },
+  //{ path: "", component: HomeComponent },
+  { path: "", component: ArticleComponent },
   { path: "article", component: ArticleComponent },
   { path: "commentaire", component: CommentaireComponent },
   { path: "personne", component: PersonneComponent },
