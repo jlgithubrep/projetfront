@@ -97,7 +97,7 @@ crud commentaire
     rien
 
 sessions
-    il faut renvoyer les infos de connextions vers le service pour l'acces au url
+    il faut renvoyer les infos de connextions vers le service pour l'acces au url, voir comm dans personneservice
 
 
 securité
