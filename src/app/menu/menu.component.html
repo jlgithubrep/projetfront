@@ -1,7 +1,7 @@
 <p>
-  menu works!
+  menu works! {{auth.isLogged()}}
 </p>
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-light bg-light text-dark">
   <a class="navbar-brand" href="#">Navigation</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown"
     aria-expanded="false" aria-label="Toggle navigation">
@@ -9,19 +9,37 @@
   </button>
   <div class="collapse navbar-collapse" id="navbarNavDropdown">
     <ul class="navbar-nav">
+
+      <span *ngIf="auth.isLogged()">
+        <li class="nav-item">
+          <p>Bonjour {{auth.getItem("nom_connecte")}} {{auth.getItem("prenom_connecte")}}</p>
+        </li>
+      </span>
       <li class="nav-item active">
         <a class="nav-link" routerLink="/">Accueil <span class="sr-only">(current)</span></a>
       </li>
-      <li class="nav-item">
+      <span *ngIf="auth.isLogged() == false">
+        <li class="nav-item">
           <a routerLink="/login">Login</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/article">Articles</a>
-      </li>
-      <!-- 
-      <li class="nav-item">
-        <a class="nav-link" href="#">Pricing</a>
-      </li>
+        </li>
+      </span>
+      <span *ngIf="auth.isLogged() && auth.getItem('type_connecte') =='journaliste'">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/article">Gestion des Articles</a>
+        </li>
+      </span>
+      <span *ngIf="auth.isLogged() && auth.getItem('type_connecte') == 'administrateur'">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/personne">Personnes</a>
+        </li>
+      </span>
+      <span *ngIf="auth.isLogged()">
+        <li class="nav-item">
+          <a class="nav-link" href="#" (click)="logout()">Logout</a>
+        </li>
+      </span>
+
+      <!--
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown"
           aria-haspopup="true" aria-expanded="false">

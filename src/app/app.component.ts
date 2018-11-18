@@ -8,3 +8,5 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'projetfront';
 }
+
+console.log("dans app.component.ts:"+sessionStorage.getItem('type_connecte'));
