@@ -30,26 +30,32 @@ export class ArticleService {
 
   addArticle(p: Article) {
     let user = this.username + ":" + this.password;
-    const headers = new HttpHeaders().set("Authorization", "Basic " + btoa(user));
-    headers.append('Access-Control-Allow-Origin', '*');
-    headers.append('Access-Control-Allow-Methods', 'GET, PUT, POST, DELETE, HEAD, OPTIONS');
-    return this.http.post(this.url + "article/", p, { headers: headers });
+    const headers = new HttpHeaders().append("Authorization", "Basic " + btoa(user));
+    // headers.append('Access-Control-Allow-Origin', '*');
+    // headers.append('Access-Control-Allow-Methods', 'GET, PUT, POST, DELETE, HEAD, OPTIONS');
+
+    //return this.http.post(this.url + "article/", p, { headers: headers });
+    return this.http.post(this.url + "article/", p);
   }
 
   supprArticle(i: number) {
     let user = this.username + ":" + this.password;
-    const headers = new HttpHeaders().set("Authorization", "Basic " + btoa(user));
-    headers.append('Access-Control-Allow-Origin', '*');
-    headers.append('Access-Control-Allow-Methods', 'GET, PUT, POST, DELETE, HEAD, OPTIONS');
-    return this.http.delete(this.url + "articleDelete/" + i, { headers: headers });
+    const headers = new HttpHeaders().append("Authorization", "Basic " + btoa(user));
+    // headers.append('Access-Control-Allow-Origin', '*');
+    // headers.append('Access-Control-Allow-Methods', 'GET, PUT, POST, DELETE, HEAD, OPTIONS');
+
+    //return this.http.delete(this.url + "articleDelete/" + i, { headers: headers });
+    return this.http.delete(this.url + "articleDelete/" + i);
   }
 
   updateArticle(i: number, p: Article) {
     let user = this.username + ":" + this.password;
-    const headers = new HttpHeaders().set("Authorization", "Basic " + btoa(user));
-    headers.append('Access-Control-Allow-Origin', '*');
-    headers.append('Access-Control-Allow-Methods', 'GET, PUT, POST, DELETE, HEAD, OPTIONS');
-    return this.http.put(this.url + "articleUpdate/" + i, p, { headers: headers });
+    const headers = new HttpHeaders().append("Authorization", "Basic " + btoa(user));
+    // headers.append('Access-Control-Allow-Origin', '*');
+    // headers.append('Access-Control-Allow-Methods', 'GET, PUT, POST, DELETE, HEAD, OPTIONS');
+
+    //return this.http.put(this.url + "articleUpdate/" + i, p, { headers: headers });
+    return this.http.put(this.url + "articleUpdate/" + i, p);
   }
 
 }

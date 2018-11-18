@@ -23,7 +23,7 @@ export class LoginComponent implements OnInit {
     this.personneService.login(this.mail, this.mdp).subscribe(res => {
 
       this.p = <Personne>res;
-      console.log(this.p.nom);
+      console.log("log in reussi :"+this.p.nom);
 
     },
       err => {
