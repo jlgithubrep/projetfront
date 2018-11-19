@@ -8,11 +8,14 @@ import { AppComponent } from './app.component';
 import { ArticleComponent } from './article/article.component';
 import { PersonneComponent } from './personne/personne.component';
 import { CommentaireComponent } from './commentaire/commentaire.component';
-import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { FooterComponent } from './footer/footer.component';
 import { MenuComponent } from './menu/menu.component';
 import { InscriptionComponent } from './inscription/inscription.component';
+import { GestionarticleComponent } from './gestionarticle/gestionarticle.component';
+import { PersonneService } from './services/personne.services';
+import { AuthentificationService } from './services/authentification.service';
+import { ArticleService } from './services/article.service';
 
 @NgModule({
   declarations: [
@@ -20,11 +23,11 @@ import { InscriptionComponent } from './inscription/inscription.component';
     ArticleComponent,
     PersonneComponent,
     CommentaireComponent,
-    HomeComponent,
     LoginComponent,
     FooterComponent,
     MenuComponent,
-    InscriptionComponent
+    InscriptionComponent,
+    GestionarticleComponent
   ],
   imports: [
     BrowserModule,
@@ -32,7 +35,7 @@ import { InscriptionComponent } from './inscription/inscription.component';
     FormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [PersonneService,AuthentificationService, ArticleService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

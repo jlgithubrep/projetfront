@@ -37,9 +37,11 @@ export class LoginComponent implements OnInit {
       //   console.log("type: "+sessionStorage.getItem('type_connecte'));
       // }
 
-      this.auth.setItem('nom_connete', this.p.nom);
+      this.auth.setItem('nom_connecte', this.p.nom);
       this.auth.setItem('prenom_connecte', this.p.prenom);
       this.auth.setItem('type_connecte', this.p.type);
+      this.auth.setItem('mail_connecte', this.p.mail);
+      this.auth.setItem("mdp_connecte",this.p.mdp);
 
       if (window.sessionStorage) {
         console.log("session ok");

@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { Personne } from '../interfaces/Personne';
+import { AuthentificationService } from './authentification.service';
 
 @Injectable({
     providedIn: 'root'
@@ -9,30 +10,39 @@ import { Personne } from '../interfaces/Personne';
 export class PersonneService {
 
     url: string = "http://localhost:8080/";
+    mail: string ;
+    password: string ;
+    constructor(private http: HttpClient, private auth: AuthentificationService) { 
+        // this.mail= this.auth.getItem("mail_connecte");
+        // this.password = this.auth.getItem("mdp_connecte");
+        // console.log(this.mail + ":" + this.password);
 
-    constructor(private http: HttpClient) { }
+    }
 
-    personnes: Personne[] = new Array;
+    personnes: Personne[] = new Array();
 
     //headers: HttpHeaders = new HttpHeaders();
 
     //il faut passer les variables en sessions de locastorage ici
-    username: string = "wick";
-    password: string = "admin";
+    // mail: string = "mail.test@gmail.com";
+    // password: string = "admin";
 
 
 
     getAllPersonne() {
-        let username = this.username;
-        let password = this.password;
-        let user = username + ":" + password;
-        const headers = new HttpHeaders().append('Authorization', "Basic " + btoa(user));
+        this.mail= this.auth.getItem("mail_connecte");
+        this.password = this.auth.getItem("mdp_connecte");
+        let user = this.mail + ":" + this.password;
+        console.log(this.mail + ":" + this.password);
+        const headers = new HttpHeaders().set('Authorization', "Basic " + btoa(user));
+        console.log(user);
+
         console.log("Basic " + btoa(user));
 
 
         // headers.append('Access-Control-Allow-Origin', '*');
         // headers.append('Access-Control-Allow-Methods', 'GET, PUT, POST, DELETE, HEAD, OPTIONS');
-        
+
         return this.http.get<Array<Personne>>(this.url + "personnes/", { headers: headers });
         //return this.http.get<Array<Personne>>(this.url + "personnes/");
     }
@@ -42,7 +52,7 @@ export class PersonneService {
     }
 
     addPersonne(p: Personne) {
-        let user = this.username + ":" + this.password;
+        let user = this.mail + ":" + this.password;
         const headers = new HttpHeaders().append("Authorization", "Basic " + btoa(user));
         // headers.append('Access-Control-Allow-Origin', '*');
         // headers.append('Access-Control-Allow-Methods', 'GET, PUT, POST, DELETE, HEAD, OPTIONS');
@@ -52,7 +62,7 @@ export class PersonneService {
     }
 
     supprPersonne(i: number) {
-        let user = this.username + ":" + this.password;
+        let user = this.mail + ":" + this.password;
         const headers = new HttpHeaders().append("Authorization", "Basic " + btoa(user));
         // headers.append('Access-Control-Allow-Origin', '*');
         // headers.append('Access-Control-Allow-Methods', 'GET, PUT, POST, DELETE, HEAD, OPTIONS');
@@ -63,7 +73,7 @@ export class PersonneService {
     }
 
     updatePersonne(i: number, p: Personne) {
-        let user = this.username + ":" + this.password;
+        let user = this.mail + ":" + this.password;
         const headers = new HttpHeaders().append("Authorization", "Basic " + btoa(user));
         // headers.append('Access-Control-Allow-Origin', '*');
         // headers.append('Access-Control-Allow-Methods', 'GET, PUT, POST, DELETE, HEAD, OPTIONS');
@@ -73,8 +83,9 @@ export class PersonneService {
     }
 
     login(mail: string, password: string) {
-        let user = this.username + ":" + this.password;
-        const headers = new HttpHeaders().append("Authorization", "Basic " + btoa(user));
+
+        // let user = this.mail + ":" + this.password;
+        // const headers = new HttpHeaders().append("Authorization", "Basic " + btoa(user));
         // headers.append('Access-Control-Allow-Origin', '*');
         // headers.append('Access-Control-Allow-Methods', 'GET, PUT, POST, DELETE, HEAD, OPTIONS');
 

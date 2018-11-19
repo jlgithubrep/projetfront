@@ -3,9 +3,9 @@ import { Routes, RouterModule } from '@angular/router';
 import { ArticleComponent } from './article/article.component';
 import { CommentaireComponent } from './commentaire/commentaire.component';
 import { PersonneComponent } from './personne/personne.component';
-import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { InscriptionComponent } from './inscription/inscription.component';
+import { GestionarticleComponent } from './gestionarticle/gestionarticle.component';
 
 const routes: Routes = [
   //{ path: "", component: HomeComponent },
@@ -14,7 +14,8 @@ const routes: Routes = [
   { path: "commentaire", component: CommentaireComponent },
   { path: "personne", component: PersonneComponent },
   { path: "login", component: LoginComponent },
-  { path: "inscription", component: InscriptionComponent }
+  { path: "inscription", component: InscriptionComponent },
+  { path: "gestionarticle", component: GestionarticleComponent }
 ];
 
 @NgModule({

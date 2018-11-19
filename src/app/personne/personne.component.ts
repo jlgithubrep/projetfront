@@ -8,18 +8,7 @@ import { Personne } from '../interfaces/Personne';
   styleUrls: ['./personne.component.css']
 })
 export class PersonneComponent implements OnInit {
-
-  constructor(private personneService: PersonneService) {
-    this.personneService.getAllPersonne().subscribe(res => {
-      //this.personnes = res['_embedded'].personnes;
-      this.personnes =res;
-    });
-  }
-
   personnes: Personne[] = new Array;
-
-
-
 
   //modif
   nomModif: string;
@@ -27,12 +16,16 @@ export class PersonneComponent implements OnInit {
   mailModif: string;
   mdpModif: string;
 
-
   aff: boolean = false;//pour cacher les zones de modification de commentaires
   idAffMod: number;//pour recupere l'id du commentaire pour le quel on veut afficher la zone de modif
 
 
-
+  constructor(private personneService: PersonneService) {
+    this.personneService.getAllPersonne().subscribe(res => {
+      //this.personnes = res['_embedded'].personnes;
+      this.personnes =res;
+    });
+  }
 
   //admin
   supprimerPersonne(id: number) {

@@ -12,7 +12,7 @@
 
       <span *ngIf="auth.isLogged()">
         <li class="nav-item">
-          <p>Bonjour {{auth.getItem("nom_connecte")}} {{auth.getItem("prenom_connecte")}}</p>
+          <span class="nav-link" >Bonjour {{auth.getItem("type_connecte")}} {{auth.getItem("nom_connecte")}} {{auth.getItem("prenom_connecte")}}</span>
         </li>
       </span>
       <li class="nav-item active">
@@ -20,12 +20,12 @@
       </li>
       <span *ngIf="auth.isLogged() == false">
         <li class="nav-item">
-          <a routerLink="/login">Login</a>
+          <a class="nav-link" routerLink="/login">Login</a>
         </li>
       </span>
       <span *ngIf="auth.isLogged() && auth.getItem('type_connecte') =='journaliste'">
         <li class="nav-item">
-          <a class="nav-link" routerLink="/article">Gestion des Articles</a>
+          <a class="nav-link" routerLink="/gestionarticle">Gestion des Articles</a>
         </li>
       </span>
       <span *ngIf="auth.isLogged() && auth.getItem('type_connecte') == 'administrateur'">

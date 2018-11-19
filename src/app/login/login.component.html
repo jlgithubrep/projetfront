@@ -1,8 +1,8 @@
 <p>
   login works!
 </p>
-<div class="row">
-  <form #loginForm="ngForm">
+<div class="row" >
+  <form #loginForm="ngForm" (ngSubmit)="login()">
 
     <div class="form-group">
       <label for="mail">Email: </label>
@@ -12,7 +12,7 @@
       <input type="password" class="form-control" id="mdp" name="mdp" placeholder="Entrez votre mot de passe" [(ngModel)]="mdp"
         required>
     </div>
-    <button (click)="login()" type="submit" class="btn btn-primary" [disabled]="!loginForm.valid">Se connecter</button>
+    <button  type="submit" class="btn btn-primary" [disabled]="!loginForm.valid">Se connecter</button>
   </form>
 
 <div class="bg-warning" *ngIf="erreur == true">
