@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Article } from '../interfaces/Article';
+import { AuthentificationService } from './authentification.service';
 
 @Injectable({
   providedIn: 'root'
@@ -9,12 +10,15 @@ export class ArticleService {
 
   url: string = "http://localhost:8080/";
 
-  constructor(private http: HttpClient) { }
 
   articles: Article[] = new Array;
 
-  username: string = "user";
-  password: string = "";
+  mail: string;
+  password: string;
+
+  constructor(private http: HttpClient, private auth : AuthentificationService) { }
+
+
 
   getAllArticles() {
     // let user = this.username + ":" + this.password;
@@ -24,12 +28,20 @@ export class ArticleService {
     return this.http.get<Array<Article>>(this.url + "articles/");
   }
 
+  getArticlesByAuthor() {
+    this.mail = this.auth.getItem("mail_connecte");
+    this.password = this.auth.getItem("mdp_connecte");
+    let user = this.mail + ":" + this.password;
+    const headers = new HttpHeaders().set('Authorization', "Basic " + btoa(user));
+    return this.http.get<Array<Article>>(this.url + "articlesparauteur?auteur="+this.auth.getItem("nom_connecte"), { headers: headers });
+  }
+
   findById(id: number) {
     return this.http.get<Article>(this.url + "articles/" + id);
   }
 
   addArticle(p: Article) {
-    let user = this.username + ":" + this.password;
+    let user = this.mail + ":" + this.password;
     const headers = new HttpHeaders().append("Authorization", "Basic " + btoa(user));
     // headers.append('Access-Control-Allow-Origin', '*');
     // headers.append('Access-Control-Allow-Methods', 'GET, PUT, POST, DELETE, HEAD, OPTIONS');
@@ -39,7 +51,7 @@ export class ArticleService {
   }
 
   supprArticle(i: number) {
-    let user = this.username + ":" + this.password;
+    let user = this.mail + ":" + this.password;
     const headers = new HttpHeaders().append("Authorization", "Basic " + btoa(user));
     // headers.append('Access-Control-Allow-Origin', '*');
     // headers.append('Access-Control-Allow-Methods', 'GET, PUT, POST, DELETE, HEAD, OPTIONS');
@@ -49,7 +61,7 @@ export class ArticleService {
   }
 
   updateArticle(i: number, p: Article) {
-    let user = this.username + ":" + this.password;
+    let user = this.mail + ":" + this.password;
     const headers = new HttpHeaders().append("Authorization", "Basic " + btoa(user));
     // headers.append('Access-Control-Allow-Origin', '*');
     // headers.append('Access-Control-Allow-Methods', 'GET, PUT, POST, DELETE, HEAD, OPTIONS');

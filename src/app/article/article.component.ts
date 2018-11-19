@@ -9,13 +9,15 @@ import { Article } from '../interfaces/Article';
 })
 export class ArticleComponent implements OnInit {
 
+  articles : Article[] = new Array();
+
   constructor(private articleService : ArticleService) {
     this.articleService.getAllArticles().subscribe(res=>{
       this.articles = res;
     });
   }
 
-  articles : Article[] = new Array;
+
   ngOnInit() {
   }
 

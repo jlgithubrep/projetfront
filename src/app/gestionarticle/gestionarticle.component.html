@@ -1,3 +1,19 @@
 <p>
   gestionarticle works!
 </p>
+<div class="row">
+
+  <div *ngFor="let a of articles ; let i = index">
+    <p>
+      {{a.titre}}
+      {{a.auteurArticle}}
+      {{a.tag}}
+      {{a.datePublication | date}}
+      {{a.nbVue}}
+      {{a.contenuArticle}}
+
+    </p>
+  </div>
+
+
+</div>

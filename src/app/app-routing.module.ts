@@ -6,11 +6,13 @@ import { PersonneComponent } from './personne/personne.component';
 import { LoginComponent } from './login/login.component';
 import { InscriptionComponent } from './inscription/inscription.component';
 import { GestionarticleComponent } from './gestionarticle/gestionarticle.component';
+import { ArticledetailsComponent } from './articledetails/articledetails.component';
 
 const routes: Routes = [
   //{ path: "", component: HomeComponent },
   { path: "", component: ArticleComponent },
   { path: "article", component: ArticleComponent },
+  { path: "articledetails/:idArticle", component: ArticledetailsComponent },
   { path: "commentaire", component: CommentaireComponent },
   { path: "personne", component: PersonneComponent },
   { path: "login", component: LoginComponent },

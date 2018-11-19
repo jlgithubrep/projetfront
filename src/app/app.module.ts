@@ -16,6 +16,7 @@ import { GestionarticleComponent } from './gestionarticle/gestionarticle.compone
 import { PersonneService } from './services/personne.services';
 import { AuthentificationService } from './services/authentification.service';
 import { ArticleService } from './services/article.service';
+import { ArticledetailsComponent } from './articledetails/articledetails.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { ArticleService } from './services/article.service';
     FooterComponent,
     MenuComponent,
     InscriptionComponent,
-    GestionarticleComponent
+    GestionarticleComponent,
+    ArticledetailsComponent
   ],
   imports: [
     BrowserModule,
