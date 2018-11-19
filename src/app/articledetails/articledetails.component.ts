@@ -20,7 +20,15 @@ export class ArticledetailsComponent implements OnInit {
     datePublication: null,
     etat: "",
     nbVue: 0,
-    contenuArticle: ""
+    contenuArticle: "",
+    commentaires: [{
+      idCommentaire: 0,
+      auteurCommentaire: "",
+      contenuCommentaire: "",
+      dateCommentaire: null,
+      etatCommentaire: "",
+      personne: null
+    }]
   };
 
   constructor(private route: ActivatedRoute, private articleService: ArticleService) {
@@ -31,7 +39,7 @@ export class ArticledetailsComponent implements OnInit {
     this.articleService.findById(this.idArticle).subscribe(res => {
       this.art = res;
 
-      console.log(this.art);
+      console.log(this.art.commentaires[0]);
 
     });
 

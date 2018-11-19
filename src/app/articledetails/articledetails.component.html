@@ -1,4 +1,25 @@
 <p>
   articledetails works!
 </p>
-{{art.titre}}
+<div class="row">
+  <h1 class="display-4">{{art.titre}}</h1>
+
+  <p>
+    {{art.contenuArticle}}
+  </p>
+
+  <p>Ecrit par: {{art.auteurArticle}}</p>
+  <p>Catégorie: {{art.tag}}</p>
+  <p>Publié le: {{art.datePublication | date}}</p>
+  <!-- <p> Nombre de vues: {{art.nbVue}}</p> -->
+
+
+  <div class="row">
+    commentaires
+    <div *ngFor="let c of art.commentaires">
+      {{c.contenuCommentaire}}
+    </div>
+  </div>
+
+
+</div>

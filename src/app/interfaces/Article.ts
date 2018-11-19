@@ -1,3 +1,5 @@
+import { Commentaire } from "./Commentaire";
+
 export interface Article {
     idArticle: number;
     titre: string;
@@ -7,4 +9,5 @@ export interface Article {
     etat: string;
     nbVue: number;
     contenuArticle: string;
+    commentaires : Commentaire[]; 
 }
