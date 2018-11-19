@@ -17,6 +17,8 @@ import { PersonneService } from './services/personne.services';
 import { AuthentificationService } from './services/authentification.service';
 import { ArticleService } from './services/article.service';
 import { ArticledetailsComponent } from './articledetails/articledetails.component';
+import { AjoutarticleComponent } from './ajoutarticle/ajoutarticle.component';
+import { ArticlemodifierComponent } from './articlemodifier/articlemodifier.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +31,9 @@ import { ArticledetailsComponent } from './articledetails/articledetails.compone
     MenuComponent,
     InscriptionComponent,
     GestionarticleComponent,
-    ArticledetailsComponent
+    ArticledetailsComponent,
+    AjoutarticleComponent,
+    ArticlemodifierComponent
   ],
   imports: [
     BrowserModule,

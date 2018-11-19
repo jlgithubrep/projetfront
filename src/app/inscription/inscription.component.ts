@@ -9,10 +9,6 @@ import { Personne } from '../interfaces/Personne';
 })
 export class InscriptionComponent implements OnInit {
 
-  constructor(private personneService: PersonneService) {
-    this.passwordnotmatching = false;
-  }
-
 
   //ajout/inscription user
   nom: string;
@@ -23,6 +19,12 @@ export class InscriptionComponent implements OnInit {
   selectNewsletter: number;
 
   passwordnotmatching: boolean;
+
+
+  constructor(private personneService: PersonneService) {
+    this.passwordnotmatching = false;
+  }
+
 
 
   //ajout/inscription user
