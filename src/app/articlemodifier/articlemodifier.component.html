@@ -1,3 +1,43 @@
 <p>
   articlemodifier works!
 </p>
+<div class="row">
+  <h1 class="display-4">{{art.titre}}</h1>
+
+  <p>
+    {{art.contenuArticle}}
+  </p>
+
+  <p>Ecrit par: {{art.auteurArticle}}</p>
+  <p>Catégorie: {{art.tag}}</p>
+  <p>Publié le: {{art.datePublication | date}}</p>
+  <!-- <p> Nombre de vues: {{art.nbVue}}</p> -->
+
+
+
+  <form #articleForm="ngForm" (ngSubmit)="modifierArticle()">
+
+    <div class="form-group">
+      <label for="titre"> Nouveau Titre: </label>
+      <input type="text" class="form-control" id="titre" name="titre" placeholder="Entrez le titre" [(ngModel)]="titre"
+        required>
+
+      <label for="selectTag">Catégorie: </label>
+      <select class="form-control" id="selectTag" name="selectTag" [(ngModel)]="tag" required>
+        <option value="sport">Sport</option>
+        <option value="voyage">Voyage</option>
+        <option value='high-tech'>High-Tech</option>
+        <option value="insolite">Insolite</option>
+      </select>
+
+
+
+      <label for="contenuArticle">Modification du Contenu: </label>
+      <input type="text" class="form-control" id="contenuArticle" name="contenuArticle" placeholder="Rédigez votre article"
+        [(ngModel)]=contenuArticle required>
+
+    </div>
+    <button type="submit" class="btn btn-primary" [disabled]="!articleForm.valid">Modifier l'article</button>
+  </form>
+
+</div>

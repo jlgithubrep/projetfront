@@ -8,6 +8,7 @@ import { InscriptionComponent } from './inscription/inscription.component';
 import { GestionarticleComponent } from './gestionarticle/gestionarticle.component';
 import { ArticledetailsComponent } from './articledetails/articledetails.component';
 import { AjoutarticleComponent } from './ajoutarticle/ajoutarticle.component';
+import { ArticlemodifierComponent } from './articlemodifier/articlemodifier.component';
 
 const routes: Routes = [
   //{ path: "", component: HomeComponent },
@@ -19,7 +20,8 @@ const routes: Routes = [
   { path: "login", component: LoginComponent },
   { path: "inscription", component: InscriptionComponent },
   { path: "gestionarticle", component: GestionarticleComponent },
-  { path: "ajoutarticle", component: AjoutarticleComponent }
+  { path: "ajoutarticle", component: AjoutarticleComponent },
+  { path:"articlemodifier/:idArticle", component: ArticlemodifierComponent}
 ];
 
 @NgModule({
