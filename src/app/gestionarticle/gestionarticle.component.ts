@@ -18,6 +18,16 @@ export class GestionarticleComponent implements OnInit {
     });
   }
 
+  supprimerArticle(idArticle : number){
+
+    console.log(idArticle);
+    this.articleService.supprArticle(idArticle).subscribe(res=>{
+      this.articleService.getArticlesByAuthor().subscribe(res2=>{
+        this.articles = res2;
+      });
+    });
+  }
+
   ngOnInit() {
   }
 

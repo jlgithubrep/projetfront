@@ -58,6 +58,10 @@ creer les controller avec pathname
 
 ------------
 
+rajouter test mail unique
+
+tester la modif d'un article avec des comms et s'assurer que les comms sont toujours presents
+
 crud personne
     create
 	    faire inscription avec validators

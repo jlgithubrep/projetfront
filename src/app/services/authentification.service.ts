@@ -11,7 +11,7 @@ export class AuthentificationService {
     return sessionStorage.getItem(key);
   }
 
-  setItem(key: string, value: string){
+  setItem(key: string, value: any){
     sessionStorage.setItem(key, value);
   }
 

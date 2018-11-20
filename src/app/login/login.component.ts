@@ -37,6 +37,7 @@ export class LoginComponent implements OnInit {
       //   console.log("type: "+sessionStorage.getItem('type_connecte'));
       // }
 
+      this.auth.setItem('id_connecte', this.p.id);
       this.auth.setItem('nom_connecte', this.p.nom);
       this.auth.setItem('prenom_connecte', this.p.prenom);
       this.auth.setItem('type_connecte', this.p.type);
