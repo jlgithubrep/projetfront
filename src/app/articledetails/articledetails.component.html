@@ -17,9 +17,52 @@
   <div class="row">
     commentaires
     <div *ngFor="let c of art.commentaires">
+      <!-- {{c.idCommentaire}} -->
+      {{c.auteurCommentaire}}
+      {{c.dateCommentaire | date}}
       {{c.contenuCommentaire}}
+
+      <span *ngIf="auth.isLogged() && auth.getItem('nom_connecte') == c.auteurCommentaire ">
+        <button (click)="afficheModifComm(c.idCommentaire)" type="submit" class="btn btn-info">Modifier</button>
+        <!-- zone de modif, ne s'afficher que si aff==true et si idAffMod est egal au i courant  -->
+        <form #modifComm="ngForm" *ngIf="aff && idAffMod==c.idCommentaire">
+          <div class="form-group">
+
+            <label for="commentaireModif">Modifier le commentaire: </label>
+            <input type="text" class="form-control" id="commentaireModif" name="commentaireModif" [(ngModel)]="commentaireModif"
+              required>
+
+          </div>
+          <button (click)="confirmModif(c.idCommentaire)" type="submit" class="btn btn-warning" [disabled]="!modifComm.valid">Modifier</button>
+        </form>
+
+
+        <button (click)="supprimerCommentaire(c.idCommentaire)" type="submit" class="btn btn-danger">Supprimer</button>
+
+      </span>
+
+
     </div>
   </div>
+
+  <!-- zone d'ajout de commentaire -->
+  <span *ngIf="auth.isLogged()">
+    <div class="row">
+      <p>Ajouter un Commentaire à l'article</p>
+
+      <form #commentForm="ngForm" (ngSubmit)="addComment(art.idArticle)">
+        <div class="form-group">
+          <label for="contenuCommentaire">Contenu: </label>
+          <input type="text" class="form-control" id="contenuCommentaire" name="contenuCommentaire" placeholder="Ecrivez votre commentaire"
+            [(ngModel)]=contenuCommentaire required>
+        </div>
+        <button type="submit" class="btn btn-primary" [disabled]="!commentForm.valid">Ajouter le commentaire</button>
+      </form>
+
+
+    </div>
+  </span>
+
 
 
 </div>

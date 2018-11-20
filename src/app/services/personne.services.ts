@@ -52,34 +52,29 @@ export class PersonneService {
     }
 
     addPersonne(p: Personne) {
-        let user = this.mail + ":" + this.password;
-        const headers = new HttpHeaders().append("Authorization", "Basic " + btoa(user));
-        // headers.append('Access-Control-Allow-Origin', '*');
-        // headers.append('Access-Control-Allow-Methods', 'GET, PUT, POST, DELETE, HEAD, OPTIONS');
-
-        //return this.http.post(this.url + "personne/", p, { headers: headers });
         return this.http.post(this.url + "personne/", p);
     }
 
     supprPersonne(i: number) {
+        this.mail= this.auth.getItem("mail_connecte");
+        this.password = this.auth.getItem("mdp_connecte");
         let user = this.mail + ":" + this.password;
-        const headers = new HttpHeaders().append("Authorization", "Basic " + btoa(user));
-        // headers.append('Access-Control-Allow-Origin', '*');
-        // headers.append('Access-Control-Allow-Methods', 'GET, PUT, POST, DELETE, HEAD, OPTIONS');
-        //return this.http.delete(this.url + "personneDelete/" + i, { headers: headers });
+        console.log(this.mail + ":" + this.password);
+        const headers = new HttpHeaders().set('Authorization', "Basic " + btoa(user));
 
-        //return this.http.delete(this.url + "personneDelete/" + i, { headers: headers });
-        return this.http.delete(this.url + "personneDelete/" + i);
+        return this.http.delete(this.url + "personneDelete/" + i, { headers: headers });
+        //return this.http.delete(this.url + "personneDelete/" + i);
     }
 
     updatePersonne(i: number, p: Personne) {
+        this.mail= this.auth.getItem("mail_connecte");
+        this.password = this.auth.getItem("mdp_connecte");
         let user = this.mail + ":" + this.password;
-        const headers = new HttpHeaders().append("Authorization", "Basic " + btoa(user));
-        // headers.append('Access-Control-Allow-Origin', '*');
-        // headers.append('Access-Control-Allow-Methods', 'GET, PUT, POST, DELETE, HEAD, OPTIONS');
+        console.log(this.mail + ":" + this.password);
+        const headers = new HttpHeaders().set('Authorization', "Basic " + btoa(user));
 
-        //return this.http.put(this.url + "personneUpdate/" + i, p, { headers: headers });
-        return this.http.put(this.url + "personneUpdate/" + i, p);
+        return this.http.put(this.url + "personneUpdate/" + i, p, { headers: headers });
+        //return this.http.put(this.url + "personneUpdate/" + i, p);
     }
 
     login(mail: string, password: string) {

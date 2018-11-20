@@ -19,6 +19,7 @@ import { ArticleService } from './services/article.service';
 import { ArticledetailsComponent } from './articledetails/articledetails.component';
 import { AjoutarticleComponent } from './ajoutarticle/ajoutarticle.component';
 import { ArticlemodifierComponent } from './articlemodifier/articlemodifier.component';
+import { CommentairesService } from './services/commentaires.service';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,7 @@ import { ArticlemodifierComponent } from './articlemodifier/articlemodifier.comp
     FormsModule,
     HttpClientModule
   ],
-  providers: [PersonneService,AuthentificationService, ArticleService],
+  providers: [PersonneService,AuthentificationService, ArticleService, CommentairesService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
