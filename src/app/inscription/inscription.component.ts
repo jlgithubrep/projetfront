@@ -20,9 +20,13 @@ export class InscriptionComponent implements OnInit {
 
   passwordnotmatching: boolean;
 
+  tabAllEmail : string[];
+  mailExistant:boolean;
+
 
   constructor(private personneService: PersonneService) {
     this.passwordnotmatching = false;
+    this.mailExistant = false;
   }
 
 
@@ -34,14 +38,36 @@ export class InscriptionComponent implements OnInit {
       this.passwordnotmatching = true;
     } else {
 
-      let p: Personne = { id: null, abonne: this.selectNewsletter, mail: this.mail, mdp: this.mdp, nom: this.nom, prenom: this.prenom, type: "utilisateur" };
+      this.personneService.getAllEmail().subscribe(res=>{
+        this.tabAllEmail = res;
 
-      this.personneService.addPersonne(p).subscribe(res => {
-        this.nom = "";
-        this.prenom = "";
-        this.mail = "";
-        this.mdp = "";
+        this.tabAllEmail.forEach(element => {
+          if (element == this.mail) {
+            this.mailExistant = true
+          }else{
+            let p: Personne = {
+              id: null,
+              abonne: this.selectNewsletter,
+              mail: this.mail,
+              mdp: this.mdp,
+              nom: this.nom,
+              prenom: this.prenom,
+              type: "utilisateur"
+            };
+      
+            this.personneService.addPersonne(p).subscribe(res => {
+              this.nom = "";
+              this.prenom = "";
+              this.mail = "";
+              this.mdp = "";
+            });
+          }
+        });
+
       });
+
+
+
     }
 
 

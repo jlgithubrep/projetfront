@@ -60,6 +60,8 @@ creer les controller avec pathname
 
 rajouter test mail unique
 
+afficher art par tag
+
 tester la modif d'un article avec des comms et s'assurer que les comms sont toujours presents
 
 crud personne

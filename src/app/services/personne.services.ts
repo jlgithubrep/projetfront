@@ -88,4 +88,8 @@ export class PersonneService {
         return this.http.get(this.url + "personneLogin?mail=" + mail + "&mdp=" + password);
     }
 
+    getAllEmail(){
+        return this.http.get<Array<string>>("http://localhost:8080/allemailpersonnes");
+    }
+
 }

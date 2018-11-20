@@ -1,9 +1,10 @@
 <p>
   article works!
 </p>
-<div class="row">
 
-  <div *ngFor="let a of articles ; let i = index">
+
+<div *ngFor="let a of articles ; let i = index">
+  <div class="row">
     <p>
       {{a.titre}}
       {{a.auteurArticle}}
@@ -15,6 +16,4 @@
 
     </p>
   </div>
-
-
 </div>
