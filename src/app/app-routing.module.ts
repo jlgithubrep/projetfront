@@ -9,6 +9,7 @@ import { GestionarticleComponent } from './gestionarticle/gestionarticle.compone
 import { ArticledetailsComponent } from './articledetails/articledetails.component';
 import { AjoutarticleComponent } from './ajoutarticle/ajoutarticle.component';
 import { ArticlemodifierComponent } from './articlemodifier/articlemodifier.component';
+import { ArticlesbytagComponent } from './articlesbytag/articlesbytag.component';
 
 const routes: Routes = [
   //{ path: "", component: HomeComponent },
@@ -21,7 +22,8 @@ const routes: Routes = [
   { path: "inscription", component: InscriptionComponent },
   { path: "gestionarticle", component: GestionarticleComponent },
   { path: "ajoutarticle", component: AjoutarticleComponent },
-  { path:"articlemodifier/:idArticle", component: ArticlemodifierComponent}
+  { path: "articlemodifier/:idArticle", component: ArticlemodifierComponent },
+  { path: "tag/:t", component: ArticlesbytagComponent }
 ];
 
 @NgModule({

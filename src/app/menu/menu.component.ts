@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthentificationService } from '../services/authentification.service';
+import { ArticleService } from '../services/article.service';
 
 @Component({
   selector: 'app-menu',
@@ -8,11 +9,19 @@ import { AuthentificationService } from '../services/authentification.service';
 })
 export class MenuComponent implements OnInit {
 
-  constructor(private auth : AuthentificationService) { }
 
-  logout(){
-    
-    console.log("session clear"+sessionStorage.length+this.auth.getItem("nom_connecte"));
+  tags : string[];
+
+  constructor(private auth: AuthentificationService, private articleService: ArticleService) {
+    this.articleService.getAllTags().subscribe(res => {
+      console.log(res);
+      this.tags = res;
+    });
+  }
+
+  logout() {
+
+    console.log("session clear" + sessionStorage.length + this.auth.getItem("nom_connecte"));
     this.auth.logoff();
   }
 

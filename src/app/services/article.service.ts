@@ -16,7 +16,7 @@ export class ArticleService {
   mail: string;
   password: string;
 
-  constructor(private http: HttpClient, private auth : AuthentificationService) { }
+  constructor(private http: HttpClient, private auth: AuthentificationService) { }
 
 
 
@@ -33,7 +33,7 @@ export class ArticleService {
     this.password = this.auth.getItem("mdp_connecte");
     let user = this.mail + ":" + this.password;
     const headers = new HttpHeaders().set('Authorization', "Basic " + btoa(user));
-    return this.http.get<Array<Article>>(this.url + "articlesparauteur?auteur="+this.auth.getItem("nom_connecte"), { headers: headers });
+    return this.http.get<Array<Article>>(this.url + "articlesparauteur?auteur=" + this.auth.getItem("nom_connecte"), { headers: headers });
   }
 
   findById(id: number) {
@@ -41,7 +41,7 @@ export class ArticleService {
   }
 
   addArticle(p: Article) {
-    this.mail= this.auth.getItem("mail_connecte");
+    this.mail = this.auth.getItem("mail_connecte");
     this.password = this.auth.getItem("mdp_connecte");
     let user = this.mail + ":" + this.password;
 
@@ -54,7 +54,7 @@ export class ArticleService {
   }
 
   supprArticle(i: number) {
-    this.mail= this.auth.getItem("mail_connecte");
+    this.mail = this.auth.getItem("mail_connecte");
     this.password = this.auth.getItem("mdp_connecte");
     let user = this.mail + ":" + this.password;
     const headers = new HttpHeaders().set('Authorization', "Basic " + btoa(user));
@@ -66,7 +66,7 @@ export class ArticleService {
   }
 
   updateArticle(i: number, p: Article) {
-    this.mail= this.auth.getItem("mail_connecte");
+    this.mail = this.auth.getItem("mail_connecte");
     this.password = this.auth.getItem("mdp_connecte");
     let user = this.mail + ":" + this.password;
     const headers = new HttpHeaders().set('Authorization', "Basic " + btoa(user));
@@ -76,5 +76,14 @@ export class ArticleService {
     //return this.http.put(this.url + "articleUpdate/" + i, p, { headers: headers });
     return this.http.put(this.url + "articleUpdate/" + i, p, { headers: headers });
   }
+
+  getAllTags() {
+    return this.http.get<Array<string>>("http://localhost:8080/allarticlestags");
+  }
+
+  getArticlesByTag(tag : string){
+    return this.http.get<Array<Article>>("http://localhost:8080/articlesbytag?tag="+tag);
+  }
+
 
 }

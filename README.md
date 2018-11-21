@@ -58,6 +58,8 @@ creer les controller avec pathname
 
 ------------
 
+meme affichage dans article.component.html et articlesbytag.componenent.html
+
 rajouter test mail unique
 
 afficher art par tag

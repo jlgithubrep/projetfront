@@ -20,6 +20,7 @@ import { ArticledetailsComponent } from './articledetails/articledetails.compone
 import { AjoutarticleComponent } from './ajoutarticle/ajoutarticle.component';
 import { ArticlemodifierComponent } from './articlemodifier/articlemodifier.component';
 import { CommentairesService } from './services/commentaires.service';
+import { ArticlesbytagComponent } from './articlesbytag/articlesbytag.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { CommentairesService } from './services/commentaires.service';
     GestionarticleComponent,
     ArticledetailsComponent,
     AjoutarticleComponent,
-    ArticlemodifierComponent
+    ArticlemodifierComponent,
+    ArticlesbytagComponent
   ],
   imports: [
     BrowserModule,
