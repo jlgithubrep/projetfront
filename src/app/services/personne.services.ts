@@ -12,6 +12,9 @@ export class PersonneService {
     url: string = "http://localhost:8080/";
     mail: string ;
     password: string ;
+
+    personnes: Personne[] = new Array();
+
     constructor(private http: HttpClient, private auth: AuthentificationService) { 
         // this.mail= this.auth.getItem("mail_connecte");
         // this.password = this.auth.getItem("mdp_connecte");
@@ -19,7 +22,7 @@ export class PersonneService {
 
     }
 
-    personnes: Personne[] = new Array();
+  
 
     //headers: HttpHeaders = new HttpHeaders();
 
