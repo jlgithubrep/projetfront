@@ -1,11 +1,16 @@
 <p>
   gestionarticle works!
 </p>
+<div class="container">
+
+</div>
 <div class="row">
 
-  <a routerLink="/ajoutarticle">Ajouter un nouvel article</a>
+  <div class="col-md-2">
+    <a class="btn btn-info" routerLink="/ajoutarticle">Ajouter un nouvel article</a>
+  </div>
+  <h2> Mes articles publiés:</h2>
 
-  Mes articles publiés:
   <div *ngFor="let a of articles ; let i = index">
 
     {{a.titre}}
@@ -26,12 +31,13 @@
     </button>
 
     <!-- Modal -->
-    <div class="modal fade" bind-attr.id="'exampleModalCenter1'+a.idArticle" tabindex="-1" role="dialog" bind-attr.aria-labelledby="'exampleModalCenterTitle1'+a.idArticle"
-      aria-hidden="true">
+    <div class="modal fade" bind-attr.id="'exampleModalCenter1'+a.idArticle" tabindex="-1" role="dialog"
+      bind-attr.aria-labelledby="'exampleModalCenterTitle1'+a.idArticle" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title text-dark" bind-attr.id="'exampleModalCenterTitle1'+a.idArticle">Confirmation de suppression</h5>
+            <h5 class="modal-title text-dark" bind-attr.id="'exampleModalCenterTitle1'+a.idArticle">Confirmation de
+              suppression</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
@@ -49,7 +55,7 @@
 
 
 
-    
+
   </div>
 
 

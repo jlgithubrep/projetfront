@@ -21,6 +21,7 @@ import { AjoutarticleComponent } from './ajoutarticle/ajoutarticle.component';
 import { ArticlemodifierComponent } from './articlemodifier/articlemodifier.component';
 import { CommentairesService } from './services/commentaires.service';
 import { ArticlesbytagComponent } from './articlesbytag/articlesbytag.component';
+import { ReversePipePipe } from './reverse-pipe.pipe';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { ArticlesbytagComponent } from './articlesbytag/articlesbytag.component'
     ArticledetailsComponent,
     AjoutarticleComponent,
     ArticlemodifierComponent,
-    ArticlesbytagComponent
+    ArticlesbytagComponent,
+    ReversePipePipe
   ],
   imports: [
     BrowserModule,
