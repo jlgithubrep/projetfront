@@ -19,24 +19,19 @@
 
 
 
-
-
-
-    <button (click)="supprimerArticle(a.idArticle)" type="button" class="btn btn-danger">Supprimer</button>
-
     <!-- suppression d'un article par son auteur-->
     <!-- Button trigger modal -->
-    <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter1">
+    <button type="button" class="btn btn-danger" data-toggle="modal" bind-attr.data-target="'#exampleModalCenter1'+a.idArticle">
       Supprimer
-    </button> -->
+    </button>
 
     <!-- Modal -->
-    <!-- <div class="modal fade" id="exampleModalCenter1" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle1"
+    <div class="modal fade" bind-attr.id="'exampleModalCenter1'+a.idArticle" tabindex="-1" role="dialog" bind-attr.aria-labelledby="'exampleModalCenterTitle1'+a.idArticle"
       aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title text-dark" id="exampleModalCenterTitle1">Confirmation de suppression</h5>
+            <h5 class="modal-title text-dark" bind-attr.id="'exampleModalCenterTitle1'+a.idArticle">Confirmation de suppression</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
@@ -46,11 +41,11 @@
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
-            <button (click)="supprimerArticle(a.idArticle)" type="button" class="btn btn-primary">Supprimer</button>
+            <button (click)="supprimerArticle(a.idArticle)" type="button" class="btn btn-danger" data-dismiss="modal">Supprimer</button>
           </div>
         </div>
       </div>
-    </div> -->
+    </div>
 
 
 

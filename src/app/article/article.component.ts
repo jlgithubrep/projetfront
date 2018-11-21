@@ -9,11 +9,18 @@ import { Article } from '../interfaces/Article';
 })
 export class ArticleComponent implements OnInit {
 
-  articles : Article[] = new Array();
+  articles: Article[] = new Array();
 
-  constructor(private articleService : ArticleService) {
-    this.articleService.getAllArticles().subscribe(res=>{
+  tags: string[] = new Array();
+
+  constructor(private articleService: ArticleService) {
+    this.articleService.getAllArticles().subscribe(res => {
       this.articles = res;
+
+      this.articleService.getAllTags().subscribe(res2 => {
+        this.tags = res2;
+      });
+
     });
   }
 
