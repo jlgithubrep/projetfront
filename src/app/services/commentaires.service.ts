@@ -19,6 +19,7 @@ export class CommentairesService {
     this.mail = this.auth.getItem("mail_connecte");
     this.password = this.auth.getItem("mdp_connecte");
     let user = this.mail + ":" + this.password;
+    console.log(user);
     const headers = new HttpHeaders().set('Authorization', "Basic " + btoa(user));
     return this.http.post(this.url + idArticle + "/comment/", c, { headers: headers });
 
